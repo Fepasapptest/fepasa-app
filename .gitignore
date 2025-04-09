@@ -7,7 +7,7 @@ node_modules
 coverage
 
 # Producción
-dist
+# dist  # Comentamos esta línea para permitir la carpeta dist
 dist-ssr
 *.local
 
