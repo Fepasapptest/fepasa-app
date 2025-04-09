@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '',
+  base: '/fepasa-app/',
   plugins: [
     react(),
     VitePWA({
@@ -19,8 +19,8 @@ export default defineConfig({
         description: 'Aplicación de seguridad FEPASA',
         theme_color: '#ffffff',
         background_color: '#ffffff',
-        start_url: '/',
-        scope: '/',
+        start_url: '/fepasa-app/',
+        scope: '/fepasa-app/',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
@@ -42,7 +42,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,mp4}'],
         runtimeCaching: [
           {
-            urlPattern: new RegExp('.*'),
+            urlPattern: new RegExp('^https://fepasapptest\\.github\\.io/fepasa-app/.*'),
             handler: 'NetworkFirst',
             options: {
               cacheName: 'fepasa-cache',
@@ -57,8 +57,8 @@ export default defineConfig({
             }
           }
         ],
-        navigateFallback: 'index.html',
-        navigateFallbackAllowlist: [/^(?!\/__).*/],
+        navigateFallback: '/fepasa-app/index.html',
+        navigateFallbackAllowlist: [/^\/fepasa-app\//],
         skipWaiting: true,
         clientsClaim: true
       }
