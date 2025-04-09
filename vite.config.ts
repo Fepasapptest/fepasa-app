@@ -19,7 +19,7 @@ export default defineConfig({
         description: 'Aplicación de seguridad FEPASA',
         theme_color: '#ffffff',
         background_color: '#ffffff',
-        start_url: '/fepasa-app/',
+        start_url: '/fepasa-app/index.html',
         scope: '/fepasa-app/',
         display: 'standalone',
         orientation: 'portrait',
@@ -37,15 +37,25 @@ export default defineConfig({
           }
         ]
       },
-      strategies: 'generateSW',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,mp4}'],
         runtimeCaching: [
           {
-            urlPattern: new RegExp('^https://fepasapptest\\.github\\.io/fepasa-app/.*'),
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|mp4)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 días
+              }
+            }
+          },
+          {
+            urlPattern: /^https:\/\/fepasapptest\.github\.io\/fepasa-app\/.*/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'fepasa-cache',
+              cacheName: 'api-cache',
               networkTimeoutSeconds: 5,
               expiration: {
                 maxEntries: 100,
@@ -57,10 +67,12 @@ export default defineConfig({
             }
           }
         ],
-        navigateFallback: '/fepasa-app/index.html',
-        navigateFallbackAllowlist: [/^\/fepasa-app\//],
+        navigateFallback: 'index.html',
+        navigateFallbackDenylist: [/^\/api/],
+        cleanupOutdatedCaches: true,
         skipWaiting: true,
-        clientsClaim: true
+        clientsClaim: true,
+        sourcemap: true
       }
     })
   ]
