@@ -6,7 +6,8 @@ const Header: React.FC = () => {
       <img 
         src="/logo.png" 
         alt="Logo FEPASA" 
-        className="logo" 
+        className="logo"
+        style={{ maxHeight: '60px' }}
       />
     </header>
   );
