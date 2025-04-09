@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/fepasa-app/sw.js', { scope: '/fepasa-app/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://fepasapptest.github.io/fepasa-app/sw.js', { scope: 'https://fepasapptest.github.io/fepasa-app/' })})}

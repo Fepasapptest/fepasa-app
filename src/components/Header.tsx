@@ -5,7 +5,7 @@ const Header: React.FC = () => {
   return (
     <header className="header">
       <img 
-        src="./logo.png" 
+        src="https://fepasapptest.github.io/fepasa-app/logo.png" 
         alt="Logo FEPASA" 
         className="logo"
         style={{ 
