@@ -1,5 +1,7 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import Header from '../components/Header';
+import '../App.css';
 
 interface Video {
   id: string;
@@ -26,9 +28,9 @@ const categories = ['Todos', 'Procedimientos', 'Equipamiento', 'Materiales'];
 
 function Videos() {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const [selectedCategory, setSelectedCategory] = React.useState('Todos');
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [selectedVideo, setSelectedVideo] = React.useState<Video | null>(null);
 
   const filteredVideos = videosData.filter(video => {
     const matchesCategory = selectedCategory === 'Todos' || video.category === selectedCategory;
@@ -47,10 +49,7 @@ function Videos() {
 
   return (
     <div className="app">
-      <header className="header">
-        <img src="/logo.png" alt="Logo FEPASA" className="logo" />
-      </header>
-      
+      <Header />
       <main className="main-content">
         <div className="page-header page-videos">
           <button className="back-button" onClick={() => navigate('/')}>
@@ -59,9 +58,8 @@ function Videos() {
             </svg>
             Volver
           </button>
-          <h1>Videos</h1>
+          <h1>Videos de Seguridad</h1>
         </div>
-        
         <div className="content-section">
           <div className="videos-controls">
             <div className="search-bar">

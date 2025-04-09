@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import '../App.css';
 
 function Home() {
@@ -6,13 +7,10 @@ function Home() {
 
   return (
     <div className="app">
-      <header className="header">
-        <img src="/logo.png" alt="Logo FEPASA" className="logo" />
-      </header>
-      
+      <Header />
       <main className="main-content">
         <div className="cards-grid">
-          <div className="card purple">
+          <div className="card purple" onClick={() => navigate('/cuestionario')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -20,14 +18,12 @@ function Home() {
                 </svg>
               </div>
               <h2>Cuestionario</h2>
-              <p>Evalúa tus conocimientos sobre seguridad y prevención de riesgos.</p>
+              <p>Evalúa tus conocimientos sobre seguridad</p>
             </div>
-            <button className="btn-purple" onClick={() => navigate('/cuestionario')}>
-              Comenzar
-            </button>
+            <button className="btn-purple">Comenzar</button>
           </div>
 
-          <div className="card orange">
+          <div className="card orange" onClick={() => navigate('/campanas')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -35,14 +31,12 @@ function Home() {
                 </svg>
               </div>
               <h2>Campañas</h2>
-              <p>Descubre las últimas campañas de seguridad y participa en ellas.</p>
+              <p>Campañas de seguridad activas</p>
             </div>
-            <button className="btn-orange" onClick={() => navigate('/campanas')}>
-              Ver Campañas
-            </button>
+            <button className="btn-orange">Ver Campañas</button>
           </div>
 
-          <div className="card green">
+          <div className="card green" onClick={() => navigate('/procedimientos')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -50,14 +44,12 @@ function Home() {
                 </svg>
               </div>
               <h2>Procedimientos</h2>
-              <p>Consulta los procedimientos de seguridad actualizados.</p>
+              <p>Procedimientos de seguridad</p>
             </div>
-            <button className="btn-green" onClick={() => navigate('/procedimientos')}>
-              Ver Procedimientos
-            </button>
+            <button className="btn-green">Ver Procedimientos</button>
           </div>
 
-          <div className="card red">
+          <div className="card red" onClick={() => navigate('/videos')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -65,14 +57,12 @@ function Home() {
                 </svg>
               </div>
               <h2>Videos</h2>
-              <p>Visualiza videos instructivos sobre seguridad y prevención.</p>
+              <p>Videos instructivos de seguridad</p>
             </div>
-            <button className="btn-red" onClick={() => navigate('/videos')}>
-              Ver Videos
-            </button>
+            <button className="btn-red">Ver Videos</button>
           </div>
 
-          <div className="card yellow">
+          <div className="card yellow" onClick={() => navigate('/noticias')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -80,14 +70,12 @@ function Home() {
                 </svg>
               </div>
               <h2>Noticias</h2>
-              <p>Mantente informado sobre las últimas noticias de seguridad.</p>
+              <p>Últimas noticias de seguridad</p>
             </div>
-            <button className="btn-yellow" onClick={() => navigate('/noticias')}>
-              Ver Noticias
-            </button>
+            <button className="btn-yellow">Ver Noticias</button>
           </div>
 
-          <div className="card purple">
+          <div className="card green" onClick={() => navigate('/iper-game')}>
             <div className="card-content">
               <div className="card-icon">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -95,11 +83,9 @@ function Home() {
                 </svg>
               </div>
               <h2>Juego IPER</h2>
-              <p>Pon a prueba tus conocimientos sobre identificación de peligros y evaluación de riesgos.</p>
+              <p>Aprende sobre identificación de peligros y evaluación de riesgos</p>
             </div>
-            <button className="btn-purple" onClick={() => navigate('/iper-game')}>
-              Jugar
-            </button>
+            <button className="btn-green">Jugar</button>
           </div>
         </div>
       </main>

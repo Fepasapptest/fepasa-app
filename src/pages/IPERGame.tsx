@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { MdWarning, MdAssessment, MdSecurity } from 'react-icons/md';
 import '../App.css';
 
@@ -156,10 +157,7 @@ function IPERGame() {
 
   return (
     <div className="app">
-      <header className="header">
-        <img src="/logo.png" alt="Logo FEPASA" className="logo" />
-      </header>
-      
+      <Header />
       <main className="main-content">
         <div className="page-header">
           <button className="back-button" onClick={() => navigate('/')}>

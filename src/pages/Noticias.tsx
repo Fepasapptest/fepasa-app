@@ -1,14 +1,14 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import '../App.css';
 
 function Noticias() {
   const navigate = useNavigate();
 
   return (
     <div className="app">
-      <header className="header">
-        <img src="/logo.png" alt="Logo FEPASA" className="logo" />
-      </header>
-      
+      <Header />
       <main className="main-content">
         <div className="page-header page-noticias">
           <button className="back-button" onClick={() => navigate('/')}>
@@ -19,7 +19,6 @@ function Noticias() {
           </button>
           <h1>Noticias de Seguridad</h1>
         </div>
-        
         <div className="content-section">
           <p>Últimas noticias y actualizaciones sobre seguridad...</p>
         </div>
