@@ -8,19 +8,12 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'prompt',
-      devOptions: {
-        enabled: true
-      },
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg', 'logo.png'],
       manifest: {
         name: 'FEPASA App',
         short_name: 'FEPASA',
         description: 'Aplicación de seguridad FEPASA',
         theme_color: '#ffffff',
         background_color: '#ffffff',
-        start_url: '/fepasa-app/index.html',
-        scope: '/fepasa-app/',
         display: 'standalone',
         orientation: 'portrait',
         icons: [
@@ -38,41 +31,17 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,mp4}'],
+        globPatterns: ['**/*'],
+        maximumFileSizeToCacheInBytes: 50000000,
         runtimeCaching: [
           {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|mp4)$/,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'images-cache',
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 días
-              }
-            }
-          },
-          {
-            urlPattern: /^https:\/\/fepasapptest\.github\.io\/fepasa-app\/.*/,
+            urlPattern: /.*/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'api-cache',
-              networkTimeoutSeconds: 5,
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 24 * 60 * 60 // 24 horas
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
+              cacheName: 'fepasa-cache'
             }
           }
-        ],
-        navigateFallback: 'index.html',
-        navigateFallbackDenylist: [/^\/api/],
-        cleanupOutdatedCaches: true,
-        skipWaiting: true,
-        clientsClaim: true,
-        sourcemap: true
+        ]
       }
     })
   ]
