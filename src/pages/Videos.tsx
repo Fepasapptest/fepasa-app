@@ -17,8 +17,8 @@ const videosData: Video[] = [
     id: '1',
     title: 'Uso de respirador miniSCAPE',
     description: 'Instructivo del método de uso correcto del respirador miniSCAPE',
-    thumbnail: 'videos/thumbnails/instructivo-uso-miniscape.png',
-    videoFile: 'videos/instructivo-uso-miniscape.mp4',
+    thumbnail: './videos/thumbnails/instructivo-uso-miniscape.png',
+    videoFile: './videos/instructivo-uso-miniscape.mp4',
     category: 'Procedimientos'
   }
   // Puedes agregar más videos aquí cuando tengas las miniaturas y videos correspondientes
