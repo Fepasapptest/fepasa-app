@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/fepasa-app/',
   plugins: [
     react(),
     VitePWA({
@@ -16,16 +17,16 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: './index.html',
-        scope: '.',
+        start_url: '/fepasa-app/',
+        scope: '/fepasa-app/',
         icons: [
           {
-            src: './pwa-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: './pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -37,14 +38,20 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 50000000,
         runtimeCaching: [
           {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|mp4)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'assets-cache'
+            }
+          },
+          {
             urlPattern: /.*/,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'fepasa-cache'
             }
           }
-        ],
-        navigateFallback: './index.html'
+        ]
       }
     })
   ]
