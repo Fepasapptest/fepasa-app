@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import { config } from '../config';
 import '../App.css';
 
 interface Video {
@@ -17,8 +18,8 @@ const videosData: Video[] = [
     id: '1',
     title: 'Uso de respirador miniSCAPE',
     description: 'Instructivo del método de uso correcto del respirador miniSCAPE',
-    thumbnail: 'https://fepasapptest.github.io/fepasa-app/videos/thumbnails/instructivo-uso-miniscape.png',
-    videoFile: 'https://fepasapptest.github.io/fepasa-app/videos/instructivo-uso-miniscape.mp4',
+    thumbnail: config.getAssetPath('videos/thumbnails/instructivo-uso-miniscape.png'),
+    videoFile: config.getAssetPath('videos/instructivo-uso-miniscape.mp4'),
     category: 'Procedimientos'
   }
   // Puedes agregar más videos aquí cuando tengas las miniaturas y videos correspondientes

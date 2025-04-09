@@ -4,15 +4,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://fepasapptest.github.io/fepasa-app/',
+  base: '/fepasa-app/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRegister: 'auto',
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'sw.js',
       manifest: {
         name: 'FEPASA App',
         short_name: 'FEPASA',
@@ -21,8 +17,8 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: 'https://fepasapptest.github.io/fepasa-app/',
-        scope: 'https://fepasapptest.github.io/fepasa-app/',
+        start_url: './',
+        scope: './',
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -42,22 +38,20 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 50000000,
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/fepasapptest\.github\.io\/fepasa-app\/.*/,
+            urlPattern: /\.(js|css|html|png|jpg|jpeg|gif|svg|mp4)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'assets-cache'
+            }
+          },
+          {
+            urlPattern: /.*/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'fepasa-cache',
-              networkTimeoutSeconds: 5,
-              expiration: {
-                maxEntries: 100,
-                maxAgeSeconds: 24 * 60 * 60 // 24 horas
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
+              cacheName: 'dynamic-cache'
             }
           }
-        ],
-        navigateFallback: 'https://fepasapptest.github.io/fepasa-app/index.html'
+        ]
       }
     })
   ]
