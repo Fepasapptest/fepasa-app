@@ -4,15 +4,16 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/fepasa-app/',  // Reemplaza 'fepasa-app' con el nombre de tu repositorio
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Mi PWA App',
-        short_name: 'PWA App',
-        description: 'Mi primera Progressive Web App',
+        name: 'FEPASA App',
+        short_name: 'FEPASA',
+        description: 'Aplicación de seguridad FEPASA',
         theme_color: '#ffffff',
         icons: [
           {
@@ -28,5 +29,5 @@ export default defineConfig({
         ]
       }
     })
-  ],
+  ]
 }) 
